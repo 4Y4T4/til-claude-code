@@ -22,6 +22,11 @@ Claude Code学習記録
     # 安定版のインストールコマンド
     $ curl -fsSL https://claude.ai/install.sh | bash -s stable
     ```
+1. インストールの確認
+    ```sh
+    # バージョンが表示されればOK
+    $ claude --version
+    ```
 1. 起動(コードエディタの拡張機能から起動でもOK)
     ```sh
     $ claude
