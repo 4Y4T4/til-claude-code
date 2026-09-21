@@ -15,18 +15,18 @@ Claude Code学習記録
 
 ## 🚀Claude Codeのセットアップ
 1. Claude Codeのインストール
-  ```sh
-  # 最新版のインストールコマンド
-  $ curl -fsSL https://claude.ai/install.sh | bash
+    ```sh
+    # 最新版のインストールコマンド
+    $ curl -fsSL https://claude.ai/install.sh | bash
 
-  # 安定版のインストールコマンド
-  $ curl -fsSL https://claude.ai/install.sh | bash -s stable
-  ```
+    # 安定版のインストールコマンド
+    $ curl -fsSL https://claude.ai/install.sh | bash -s stable
+    ```
 1. 起動(コードエディタの拡張機能から起動でもOK)
-  ```sh
-  $ claude
-  ```
+    ```sh
+    $ claude
+    ```
 1. CLAUDE.mdの作成
-  ```sh
-  $ /init
-  ```
+    ```sh
+    $ /init
+    ```
