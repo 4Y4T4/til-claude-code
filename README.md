@@ -12,3 +12,17 @@ Claude Code学習記録
     - ターミナルでのコマンドの実行、テストの自動実行、デプロイまでを一貫してサポート
 1. 環境に依存しない
     - プロンプトで軽快に動作するため、どのようなエディタや環境とも統合可能
+
+## 🚀Claude Codeのセットアップ
+1. Claude Codeのインストール
+    ```sh
+    $ curl -fsSL https://claude.ai/install.sh | bash
+    ```
+1. 起動(コードエディタの拡張機能から起動でもOK)
+    ```sh
+    $ claude
+    ```
+1. CLAUDE.mdの作成
+    ```sh
+    $ /init
+    ```
