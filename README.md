@@ -64,3 +64,4 @@ Claudeではコンテキストウィンドウを最大20万トークン保持す
 
 ## 📘参考
 - Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
+- Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
