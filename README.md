@@ -91,3 +91,45 @@ Claude Codeはセッションごとの状態を保持せず、LLMは過去のデ
 ## 📘参考
 - Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
 - Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
+
+## 🔌MCPサーバー
+MCPサーバーとはClaude Codeと他のアプリケーションとのやり取りを仲介してくれる通信サーバーのこと。
+### Context7
+各種ライブラリの最新のドキュメントを参照できる。
+
+- インストール
+    ```sh
+    $ claude mcp add context7 -- npx -y @upstash/context7-mcp
+
+    # プロジェクト単位ではなくユーザー単位で追加したい場合
+    $ claude mcp add context7 -s user -- npx -y @upstash/context7-mcp
+    ```
+- 使い方
+    ```sh
+    例:  TODOアプリをNext.jsのApp Routerを使って作ってください。データはローカルに保存して下さい。 use context7
+
+    → Next.jsの最新の公式ドキュメントの記述やサンプルコードを参考にClaudeがアプリを作ってくれるため、ライブラリ使用の精度が上がる。
+    ```
+### Playwright
+Playwrightは元々、様々なブラウザを操作してE2Eテストを自動化するためのソフトウェアである。
+Claude Codeに繋ぐことによって、LLMにブラウザを操作させたり、フロントエンドの動作やエラーチェックをすることができる。
+
+- インストール
+    ```sh
+    $ claude mcp add playwright npx -y @playwright/mcp@latest
+    ```
+- 使い方
+    ```sh
+    例: Chromeブラウザで画面幅が450px以下の時に、3列になっている「ItemList」がはみ出しています。Playwright MCPで確認して修正してください。
+    ```
+### Serena
+LSP(Language Server Protocol)を提供することで、言語への理解をClaudeにもたらしコードの精度を高めることができる。
+
+-インストール
+    ```sh
+    # uv, uvxコマンドをローカルPCで利用できるようにする
+    $ curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    # リモートリポジトリのコードを仮想環境で実行
+    $ claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project /home/user/project
+    ```
