@@ -88,6 +88,14 @@ Claude Codeが複雑な問題に対してより深い分析と思考を行うた
 | 英語(english) | think harder<br>think intensely<br>think longer<br>think really hard<br>think super hard<br>think very<br>ultrathink | think about it<br>think a lot<br>think deeply<br>think hard<br>think more<br>megathink | think |
 | 日本語(japanese) | 熟考<br>深く考えて<br>しっかり考えて | もっと考えて<br>たくさん考えて<br>よく考えて<br>長考 | 考えて |
 
+また、設定でモデルの推論の深さを制御する「Think Effort」機能も存在する。
+
+- 使い方
+    ```
+    $ /effort
+    # low,medium,high,xhigh,max,auto から推論の深さを選択(モデルにより選択肢は異なる)
+    ```
+
 ## 🛡️ガードレール
 Claude Codeはセッションごとの状態を保持せず、LLMは過去のデータから統計的に答えを決めているので、時に暴れ馬のように前後の文脈をあまり理解せずにコードを書いてしまう事がある。
 そのため、なるべく軸がぶれないように守るべき仕様や規約を事前にユーザーが固めておく必要がある。
