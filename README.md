@@ -88,10 +88,6 @@ Claude Codeはセッションごとの状態を保持せず、LLMは過去のデ
 - Lintチェック
 - DB/API/データスキーマの定義
 
-## 📘参考
-- Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
-- Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
-
 ## 🔌MCPサーバー
 MCPサーバーとはClaude Codeと他のアプリケーションとのやり取りを仲介してくれる通信サーバーのこと。
 ### Context7
@@ -133,3 +129,7 @@ LSP(Language Server Protocol)を提供することで、言語への理解をCla
     # リモートリポジトリのコードを仮想環境で実行
     $ claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project /home/user/project
     ```
+
+## 📘参考
+- Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
+- Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
