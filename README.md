@@ -78,6 +78,15 @@ Claude Codeには、ファイル編集やコマンド実行の際にどこまで
     ```sh
     $ claude --permission-mode plan
     ```
+## 🧠拡張思考モード(Extended Thinking Mode)
+Claude Codeが複雑な問題に対してより深い分析と思考を行うためのモード。
+通常の応答よりも時間をかけて問題を多角的に検討し、より精度の高い回答を行う。
+ただし、トークン数を消費するため、その最大トークン数によって複数の階層に分かれている。
+
+| 言語 | 最大予算(31,999トークン) | 中予算(10,000トークン) | 小予算(4,000トークン) |
+| --- | --- | --- | --- |
+| 英語(english) | think harder<br>think intensely<br>think longer<br>think really hard<br>think super hard<br>think very<br>ultrathink | think about it<br>think a lot<br>think deeply<br>think hard<br>think more<br>megathink | think |
+| 日本語(japanese) | 熟考<br>深く考えて<br>しっかり考えて | もっと考えて<br>たくさん考えて<br>よく考えて<br>長考 | 考えて |
 
 ## 🛡️ガードレール
 Claude Codeはセッションごとの状態を保持せず、LLMは過去のデータから統計的に答えを決めているので、時に暴れ馬のように前後の文脈をあまり理解せずにコードを書いてしまう事がある。
