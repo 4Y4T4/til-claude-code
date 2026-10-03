@@ -78,6 +78,7 @@ Claude Codeには、ファイル編集やコマンド実行の際にどこまで
     ```sh
     $ claude --permission-mode plan
     ```
+
 ## 🧠拡張思考モード(Extended Thinking Mode)
 Claude Codeが複雑な問題に対してより深い分析と思考を行うためのモード。
 通常の応答よりも時間をかけて問題を多角的に検討し、より精度の高い回答を行う。
