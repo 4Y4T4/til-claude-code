@@ -114,6 +114,19 @@ paths:
     - "src/api/**/*.ts"
 ```
 
+## settings.json
+Claude Code本体の振る舞いを調整するJSON形式の設定ファイル。
+権限/出力スタイル/モデル選択/フックといった「Claude Code自身の設定」を記述する。
+
+| 種類 | 配置場所 | 共有対象 |
+| --- | --- | --- |
+| ユーザー設定 | `~/.claude/settings.json` | 自分のみ(全プロジェクト共通) |
+| プロジェクト設定 | `.claude/settings.json` | チーム全体(Gitにコミットして共有) |
+| ローカル設定 | `.claude/settings.local.json` | 自分のみ(該当プロジェクト限定、Git管理外) |
+| 管理設定(Managed) | macOS: `/Library/Application Support/ClaudeCode/managed-settings.json`<br>Linux/WSL: `/etc/claude-code/managed-settings.json`<br>Windows: `C:\Program Files\ClaudeCode\managed-settings.json` | 組織全体(管理者が配布、ユーザーは上書き不可) |
+
+- 優先順位: 管理設定 > コマンドライン引数 > ローカル設定 > プロジェクト設定 > ユーザー設定
+
 ## 🔌MCPサーバー
 MCPサーバーとはClaude Codeと他のアプリケーションとのやり取りを仲介してくれる通信サーバーのこと。
 ### Context7
