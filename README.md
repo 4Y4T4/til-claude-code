@@ -156,6 +156,16 @@ LSP(Language Server Protocol)を提供することで、言語への理解をCla
     $ claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project /home/user/project
     ```
 
+## ⚒️カスタムスラッシュコマンド
+ひとまとまりの指示をあらかじめスラッシュコマンドとして定義する事ができる。
+
+- 作り方
+    - 「.claude/commands」配下にカスタムスラッシュコマンドを定義したファイルを作成する
+- 使い方
+  ```sh
+  例: /pr-review 123
+  ```
+
 ## 📘参考
 - Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
 - Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
