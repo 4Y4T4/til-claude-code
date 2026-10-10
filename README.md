@@ -179,6 +179,15 @@ LSP(Language Server Protocol)を提供することで、言語への理解をCla
   例: /pr-review 123
   ```
 
+## 🤖サブエージェント
+サブエージェントの機能を使うことで「その道の専門家」を作ることができる。
+- 作り方
+  - 「.claude/agents」配下にサブエージェントを定義したファイルを作成する
+- 使い方
+  ```sh
+  例: @agent-frontend-expert TODO一覧に完了済み件数の表示を追加してください
+  ```
+
 ## 📘参考
 - Claude CodeによるAI駆動開発入門(平川知秀 著/技術評論社)
 - Claude Code実践入門 生成AI深掘りガイド(Oikon, 前川 蒼 著/SB Creative)
