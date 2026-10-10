@@ -114,7 +114,42 @@ paths:
     - "src/api/**/*.ts"
 ```
 
-## settings.json
+## 🎣Hook
+任意のタイミングで任意のアクションを実行できる機能。
+- 作り方
+  ```sh
+  $ /hooks
+  ```
+- Hookの動作確認
+  ```sh
+  例: @settings.local.json このHookが動くかテストして下さい。
+  ```
+- 優先順位: 管理設定 > コマンドライン引数 > ローカル設定 > プロジェクト設定 > ユーザー設定
+- Hooksのセキュリティ上の注意点
+  - カスタムスクリプトには絶対パスを使用する(check.sh ではなく ~/scripts/check.sh とする)
+  - sudo の使用は避ける(フックはユーザー権限で実行される)
+  - 機密ファイルにマッチするパターンは注意する(.env, .ssh/*, secrets.*)
+  - 入力パスを検証・サニタイズする(../ パスを拒否し、期待される形式をチェック)
+  - 信頼できないコンテンツをシェルにパイプすることは避ける(curl ... | sh | bash |)
+  - 制限的なファイル権限を使用する(777 ではなく chmod 644)
+  - インジェクション防止のためすべての変数展開をクォートする : "$VAR"
+  - スクリプトでエラーチェックを有効にしておく(set +e は避ける)
+### フックの種類
+| イベント | 発火タイミング | 主な用途 |
+| --- | --- | --- |
+| `SessionStart` | セッションの開始時・再開時 | 開発コンテキストの読み込み、環境変数の設定 |
+| `UserPromptSubmit` | ユーザーがプロンプトを送信した直後(Claudeが処理する前) | プロンプトの検証、追加コンテキストの注入 |
+| `PreToolUse` | ツールの実行前 | 危険なコマンドのブロック、ツール入力の検証 |
+| `PermissionRequest` | 権限確認ダイアログが表示されるとき | 特定の操作の自動許可・自動拒否 |
+| `PostToolUse` | ツールの実行が成功した後 | フォーマッターやLinterの自動実行 |
+| `Notification` | Claude Codeが通知を送るとき(許可待ち・入力待ちなど) | デスクトップ通知やSlack通知 |
+| `SubagentStart` | サブエージェントの起動時 | サブエージェントへのコンテキスト注入 |
+| `SubagentStop` | サブエージェントの応答完了時 | サブエージェントの作業結果の検証 |
+| `Stop` | Claudeの応答完了時 | テストの実行、作業完了の通知 |
+| `PreCompact` | コンテキストの圧縮(`/compact`・自動圧縮)の前 | 会話履歴のバックアップ |
+| `SessionEnd` | セッションの終了時 | ログの保存、後片付け処理 |
+
+### settings.json
 Claude Code本体の振る舞いを調整するJSON形式の設定ファイル。
 権限/出力スタイル/モデル選択/フックといった「Claude Code自身の設定」を記述する。
 
@@ -124,8 +159,6 @@ Claude Code本体の振る舞いを調整するJSON形式の設定ファイル�
 | プロジェクト設定 | `.claude/settings.json` | チーム全体(Gitにコミットして共有) |
 | ローカル設定 | `.claude/settings.local.json` | 自分のみ(該当プロジェクト限定、Git管理外) |
 | 管理設定(Managed) | macOS: `/Library/Application Support/ClaudeCode/managed-settings.json`<br>Linux/WSL: `/etc/claude-code/managed-settings.json`<br>Windows: `C:\Program Files\ClaudeCode\managed-settings.json` | 組織全体(管理者が配布、ユーザーは上書き不可) |
-
-- 優先順位: 管理設定 > コマンドライン引数 > ローカル設定 > プロジェクト設定 > ユーザー設定
 
 ## 🔌MCPサーバー
 MCPサーバーとはClaude Codeと他のアプリケーションとのやり取りを仲介してくれる通信サーバーのこと。
